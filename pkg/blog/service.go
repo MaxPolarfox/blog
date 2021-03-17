@@ -5,6 +5,7 @@ import (
 	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"go.mongodb.org/mongo-driver/bson"
+	"google.golang.org/grpc/reflection"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -52,6 +53,7 @@ func (s *Service) Start() {
 	server := grpc.NewServer(opts...)
 
 	blogpb.RegisterBlogServiceServer(server, s)
+	reflection.Register(server)
 
 	go func() {
 		if err := server.Serve(lis); err != nil {
