@@ -1,0 +1,5 @@
+{
+	"url": "localhost:50051",
+	"retryCount": 1,
+	"timeoutMs": 10000
+}

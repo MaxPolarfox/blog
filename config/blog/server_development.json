@@ -1,0 +1,11 @@
+{
+	"serviceName": "blog",
+	"port": 50051,
+	"db": {
+		"tasks": {
+			"connection": "mongodb://localhost:27017/blog-development?retryWrites=true&w=majority",
+			"name": "blog-development",
+			"collection": "blog"
+		}
+	}
+}

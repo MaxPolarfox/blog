@@ -11,4 +11,14 @@ message Blog {
   string content = 4;
 }
 
-service BlogService {}
+message CreateBlogReq {
+  Blog blog = 1;
+}
+
+message CreateBlogRes {
+  Blog blog = 1; // will have a blog id
+}
+
+service BlogService {
+  rpc CreateBlog (CreateBlogReq) returns (CreateBlogRes);
+}
