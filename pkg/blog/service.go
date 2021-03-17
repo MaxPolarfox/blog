@@ -38,7 +38,7 @@ func NewService(options types.Options, blogCollection mongoDB.Mongo) *Service {
 	}
 }
 
-func (s *Service) Start(){
+func (s *Service) Start() {
 	// listen to the appropriate signals, and notify a channel
 	stopChan := make(chan os.Signal, 1)
 	signal.Notify(stopChan, os.Interrupt)
@@ -115,16 +115,16 @@ func (s *Service) ReadBlog(ctx context.Context, req *blogpb.ReadBlogReq) (*blogp
 
 	return &blogpb.ReadBlogRes{
 		Blog: &blogpb.Blog{
-			Id: res.ID,
+			Id:       res.ID,
 			AuthorId: res.AuthorId,
-			Title: res.Title,
-			Content: res.Content,
+			Title:    res.Title,
+			Content:  res.Content,
 		},
 	}, nil
 }
 
 func (s *Service) UpdateBlog(ctx context.Context, req *blogpb.UpdateBlogReq) (*blogpb.UpdateBlogRes, error) {
-	log.Println("Read Blog request")
+	log.Println("Update Blog request")
 	blog := req.GetBlog()
 
 	filter := bson.M{"id": blog.Id}
@@ -132,8 +132,8 @@ func (s *Service) UpdateBlog(ctx context.Context, req *blogpb.UpdateBlogReq) (*b
 	update := bson.M{
 		"$set": bson.M{
 			"authorid": blog.GetAuthorId(),
-			"title": blog.GetTitle(),
-			"content": blog.GetContent(),
+			"title":    blog.GetTitle(),
+			"content":  blog.GetContent(),
 		},
 	}
 
@@ -152,6 +152,78 @@ func (s *Service) UpdateBlog(ctx context.Context, req *blogpb.UpdateBlogReq) (*b
 		)
 	}
 
-
 	return &blogpb.UpdateBlogRes{}, nil
+}
+
+func (s *Service) DeleteBlog(ctx context.Context, req *blogpb.DeleteBlogReq) (*blogpb.DeleteBlogRes, error) {
+	log.Println("Delete Blog request")
+	blogID := req.GetBlogId()
+
+	blog := types.Blog{}
+
+	filter := bson.M{"id": blogID}
+
+	err := s.db.blog.FindOne(ctx, filter).Decode(&blog)
+	if err != nil {
+		return nil, status.Errorf(
+			codes.NotFound,
+			fmt.Sprintf("Cannot find blog with specified ID: %v", err),
+		)
+	}
+
+	_, err = s.db.blog.DeleteOne(ctx, filter)
+	if err != nil {
+		return nil, status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Unexpected error: %v", err),
+		)
+	}
+
+	res := blogpb.DeleteBlogRes{
+		Blog: &blogpb.Blog{
+			Id:       blog.ID,
+			AuthorId: blog.AuthorId,
+			Title:    blog.Title,
+			Content:  blog.Content,
+		},
+	}
+
+	return &res, nil
+}
+
+func (s *Service) ListBlog(req *blogpb.ListBlogReq, stream blogpb.BlogService_ListBlogServer) error {
+	log.Println("List Blog request")
+	ctx := context.Background()
+
+	cursor, err := s.db.blog.Find(ctx, bson.M{})
+	if err != nil {
+		return status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Unexpected find error: %v", err),
+		)
+	}
+	defer cursor.Close(ctx)
+
+	for cursor.Next(ctx) {
+		blog := &types.Blog{}
+		err := cursor.Decode(blog)
+		if err != nil {
+			return status.Errorf(
+				codes.Internal,
+				fmt.Sprintf("Unexpected cursor error: %v", err))
+		}
+
+		stream.Send(&blogpb.ListBlogRes{Blog: &blogpb.Blog{
+			Id:       blog.ID,
+			AuthorId: blog.AuthorId,
+			Title:    blog.Title,
+			Content:  blog.Content,
+		}})
+	}
+	if err = cursor.Err(); err != nil {
+		return status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Unexpected error: %v", err))
+	}
+	return nil
 }

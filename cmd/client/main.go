@@ -63,6 +63,14 @@ func main() {
 		log.Printf("Blog was read: %#v", *readRes)
 	}
 
+	// Should return slice of blogs
+	listRes, err := client.ListBlog(ctx)
+	if err != nil {
+		log.Printf("List blog error: %v", err)
+	} else {
+		log.Printf("Listed blogs: %#v", listRes)
+	}
+
 	// Should return not found
 	readRes.Content = "Updated content"
 	err = client.UpdateBlog(ctx, types.Blog{ID: "12345"})
@@ -70,13 +78,21 @@ func main() {
 		log.Printf("Update blog error: %v", err)
 	}
 
-	// Should successfully update blog blog
+	// Should successfully update blog
 	readRes.Content = "Updated content"
 	err = client.UpdateBlog(ctx, *readRes)
 	if err != nil {
 		log.Printf("Update blog error: %v", err)
 	} else {
 		log.Printf("Successfully updated blog: %v", readRes.ID)
+	}
+
+	// Should successfully delete blog
+	deleteRes, err := client.DeleteBlog(ctx, readRes.ID)
+	if err != nil {
+		log.Printf("Delete blog error: %v", err)
+	} else {
+		log.Printf("Successfully deleted blog: %v", *deleteRes)
 	}
 }
 

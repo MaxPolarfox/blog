@@ -3,6 +3,7 @@ package client
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 
 	"google.golang.org/grpc"
@@ -72,22 +73,22 @@ func (i *BlogClient) ReadBlog(ctx context.Context, blogId string) (*types.Blog, 
 	blog := res.GetBlog()
 
 	blogRes := types.Blog{
-		ID: blog.GetId(),
+		ID:       blog.GetId(),
 		AuthorId: blog.GetAuthorId(),
-		Title: blog.GetTitle(),
-		Content: blog.GetContent(),
+		Title:    blog.GetTitle(),
+		Content:  blog.GetContent(),
 	}
 
 	return &blogRes, nil
 }
 
-func (i *BlogClient) UpdateBlog(ctx context.Context, blog types.Blog) (error) {
+func (i *BlogClient) UpdateBlog(ctx context.Context, blog types.Blog) error {
 	req := &blogpb.UpdateBlogReq{
 		Blog: &blogpb.Blog{
-			Id: blog.ID,
+			Id:       blog.ID,
 			AuthorId: blog.AuthorId,
-			Title: blog.Title,
-			Content: blog.Content,
+			Title:    blog.Title,
+			Content:  blog.Content,
 		},
 	}
 
@@ -97,4 +98,58 @@ func (i *BlogClient) UpdateBlog(ctx context.Context, blog types.Blog) (error) {
 	}
 
 	return nil
+}
+
+func (i *BlogClient) DeleteBlog(ctx context.Context, blogId string) (*types.Blog, error) {
+	req := &blogpb.DeleteBlogReq{
+		BlogId: blogId,
+	}
+
+	res, err := i.client.DeleteBlog(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+
+	blog := res.GetBlog()
+
+	blogRes := types.Blog{
+		ID:       blog.GetId(),
+		AuthorId: blog.GetAuthorId(),
+		Title:    blog.GetTitle(),
+		Content:  blog.GetContent(),
+	}
+
+	return &blogRes, nil
+}
+
+func (i *BlogClient) ListBlog(ctx context.Context) ([]types.Blog, error) {
+
+	blogs := []types.Blog{}
+
+	stream, err := i.client.ListBlog(ctx, &blogpb.ListBlogReq{})
+	if err != nil {
+		log.Fatalf("error while calling ListBlog RPC: %v", err)
+	}
+
+	for {
+		res, err := stream.Recv()
+		if err != nil {
+			if err == io.EOF {
+				break
+			} else {
+				log.Fatalf("error while calling receiving blog: %v", err)
+			}
+		}
+
+		blog := res.GetBlog()
+		blogRes := types.Blog{
+			ID:       blog.GetId(),
+			AuthorId: blog.GetAuthorId(),
+			Title:    blog.GetTitle(),
+			Content:  blog.GetContent(),
+		}
+		blogs = append(blogs, blogRes)
+	}
+
+	return blogs, nil
 }
