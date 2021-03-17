@@ -189,6 +189,185 @@ func (x *CreateBlogRes) GetBlog() *Blog {
 	return nil
 }
 
+type ReadBlogReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BlogId string `protobuf:"bytes,1,opt,name=blog_id,json=blogId,proto3" json:"blog_id,omitempty"`
+}
+
+func (x *ReadBlogReq) Reset() {
+	*x = ReadBlogReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_blogpb_blog_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ReadBlogReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReadBlogReq) ProtoMessage() {}
+
+func (x *ReadBlogReq) ProtoReflect() protoreflect.Message {
+	mi := &file_blogpb_blog_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReadBlogReq.ProtoReflect.Descriptor instead.
+func (*ReadBlogReq) Descriptor() ([]byte, []int) {
+	return file_blogpb_blog_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ReadBlogReq) GetBlogId() string {
+	if x != nil {
+		return x.BlogId
+	}
+	return ""
+}
+
+type ReadBlogRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Blog *Blog `protobuf:"bytes,1,opt,name=blog,proto3" json:"blog,omitempty"`
+}
+
+func (x *ReadBlogRes) Reset() {
+	*x = ReadBlogRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_blogpb_blog_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ReadBlogRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReadBlogRes) ProtoMessage() {}
+
+func (x *ReadBlogRes) ProtoReflect() protoreflect.Message {
+	mi := &file_blogpb_blog_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReadBlogRes.ProtoReflect.Descriptor instead.
+func (*ReadBlogRes) Descriptor() ([]byte, []int) {
+	return file_blogpb_blog_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ReadBlogRes) GetBlog() *Blog {
+	if x != nil {
+		return x.Blog
+	}
+	return nil
+}
+
+type UpdateBlogReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Blog *Blog `protobuf:"bytes,1,opt,name=blog,proto3" json:"blog,omitempty"`
+}
+
+func (x *UpdateBlogReq) Reset() {
+	*x = UpdateBlogReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_blogpb_blog_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateBlogReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateBlogReq) ProtoMessage() {}
+
+func (x *UpdateBlogReq) ProtoReflect() protoreflect.Message {
+	mi := &file_blogpb_blog_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateBlogReq.ProtoReflect.Descriptor instead.
+func (*UpdateBlogReq) Descriptor() ([]byte, []int) {
+	return file_blogpb_blog_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateBlogReq) GetBlog() *Blog {
+	if x != nil {
+		return x.Blog
+	}
+	return nil
+}
+
+type UpdateBlogRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *UpdateBlogRes) Reset() {
+	*x = UpdateBlogRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_blogpb_blog_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateBlogRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateBlogRes) ProtoMessage() {}
+
+func (x *UpdateBlogRes) ProtoReflect() protoreflect.Message {
+	mi := &file_blogpb_blog_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateBlogRes.ProtoReflect.Descriptor instead.
+func (*UpdateBlogRes) Descriptor() ([]byte, []int) {
+	return file_blogpb_blog_proto_rawDescGZIP(), []int{6}
+}
+
 var File_blogpb_blog_proto protoreflect.FileDescriptor
 
 var file_blogpb_blog_proto_rawDesc = []byte{
@@ -206,12 +385,28 @@ var file_blogpb_blog_proto_rawDesc = []byte{
 	0x2f, 0x0a, 0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x73,
 	0x12, 0x1e, 0x0a, 0x04, 0x62, 0x6c, 0x6f, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a,
 	0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x04, 0x62, 0x6c, 0x6f, 0x67,
-	0x32, 0x45, 0x0a, 0x0b, 0x42, 0x6c, 0x6f, 0x67, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
-	0x36, 0x0a, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x12, 0x13, 0x2e,
-	0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x52,
-	0x65, 0x71, 0x1a, 0x13, 0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x62, 0x6c, 0x6f, 0x67, 0x70,
-	0x62, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x26, 0x0a, 0x0b, 0x52, 0x65, 0x61, 0x64, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x71, 0x12,
+	0x17, 0x0a, 0x07, 0x62, 0x6c, 0x6f, 0x67, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x06, 0x62, 0x6c, 0x6f, 0x67, 0x49, 0x64, 0x22, 0x2d, 0x0a, 0x0b, 0x52, 0x65, 0x61, 0x64,
+	0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x73, 0x12, 0x1e, 0x0a, 0x04, 0x62, 0x6c, 0x6f, 0x67, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x42, 0x6c, 0x6f,
+	0x67, 0x52, 0x04, 0x62, 0x6c, 0x6f, 0x67, 0x22, 0x2f, 0x0a, 0x0d, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x71, 0x12, 0x1e, 0x0a, 0x04, 0x62, 0x6c, 0x6f, 0x67,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x42, 0x6c,
+	0x6f, 0x67, 0x52, 0x04, 0x62, 0x6c, 0x6f, 0x67, 0x22, 0x0f, 0x0a, 0x0d, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x73, 0x32, 0xaf, 0x01, 0x0a, 0x0b, 0x42, 0x6c,
+	0x6f, 0x67, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x36, 0x0a, 0x0a, 0x43, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x12, 0x13, 0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x13, 0x2e, 0x62,
+	0x6c, 0x6f, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65,
+	0x73, 0x12, 0x30, 0x0a, 0x08, 0x52, 0x65, 0x61, 0x64, 0x42, 0x6c, 0x6f, 0x67, 0x12, 0x11, 0x2e,
+	0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x71,
+	0x1a, 0x11, 0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x42, 0x6c, 0x6f, 0x67,
+	0x52, 0x65, 0x73, 0x12, 0x36, 0x0a, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f,
+	0x67, 0x12, 0x13, 0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x42,
+	0x6c, 0x6f, 0x67, 0x52, 0x65, 0x71, 0x1a, 0x13, 0x2e, 0x62, 0x6c, 0x6f, 0x67, 0x2e, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x42, 0x6c, 0x6f, 0x67, 0x52, 0x65, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x62,
+	0x6c, 0x6f, 0x67, 0x70, 0x62, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -226,22 +421,32 @@ func file_blogpb_blog_proto_rawDescGZIP() []byte {
 	return file_blogpb_blog_proto_rawDescData
 }
 
-var file_blogpb_blog_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_blogpb_blog_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_blogpb_blog_proto_goTypes = []interface{}{
 	(*Blog)(nil),          // 0: blog.Blog
 	(*CreateBlogReq)(nil), // 1: blog.CreateBlogReq
 	(*CreateBlogRes)(nil), // 2: blog.CreateBlogRes
+	(*ReadBlogReq)(nil),   // 3: blog.ReadBlogReq
+	(*ReadBlogRes)(nil),   // 4: blog.ReadBlogRes
+	(*UpdateBlogReq)(nil), // 5: blog.UpdateBlogReq
+	(*UpdateBlogRes)(nil), // 6: blog.UpdateBlogRes
 }
 var file_blogpb_blog_proto_depIdxs = []int32{
 	0, // 0: blog.CreateBlogReq.blog:type_name -> blog.Blog
 	0, // 1: blog.CreateBlogRes.blog:type_name -> blog.Blog
-	1, // 2: blog.BlogService.CreateBlog:input_type -> blog.CreateBlogReq
-	2, // 3: blog.BlogService.CreateBlog:output_type -> blog.CreateBlogRes
-	3, // [3:4] is the sub-list for method output_type
-	2, // [2:3] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 2: blog.ReadBlogRes.blog:type_name -> blog.Blog
+	0, // 3: blog.UpdateBlogReq.blog:type_name -> blog.Blog
+	1, // 4: blog.BlogService.CreateBlog:input_type -> blog.CreateBlogReq
+	3, // 5: blog.BlogService.ReadBlog:input_type -> blog.ReadBlogReq
+	5, // 6: blog.BlogService.UpdateBlog:input_type -> blog.UpdateBlogReq
+	2, // 7: blog.BlogService.CreateBlog:output_type -> blog.CreateBlogRes
+	4, // 8: blog.BlogService.ReadBlog:output_type -> blog.ReadBlogRes
+	6, // 9: blog.BlogService.UpdateBlog:output_type -> blog.UpdateBlogRes
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_blogpb_blog_proto_init() }
@@ -286,6 +491,54 @@ func file_blogpb_blog_proto_init() {
 				return nil
 			}
 		}
+		file_blogpb_blog_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ReadBlogReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_blogpb_blog_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ReadBlogRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_blogpb_blog_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateBlogReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_blogpb_blog_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateBlogRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -293,7 +546,7 @@ func file_blogpb_blog_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_blogpb_blog_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -320,6 +573,8 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BlogServiceClient interface {
 	CreateBlog(ctx context.Context, in *CreateBlogReq, opts ...grpc.CallOption) (*CreateBlogRes, error)
+	ReadBlog(ctx context.Context, in *ReadBlogReq, opts ...grpc.CallOption) (*ReadBlogRes, error)
+	UpdateBlog(ctx context.Context, in *UpdateBlogReq, opts ...grpc.CallOption) (*UpdateBlogRes, error)
 }
 
 type blogServiceClient struct {
@@ -339,9 +594,29 @@ func (c *blogServiceClient) CreateBlog(ctx context.Context, in *CreateBlogReq, o
 	return out, nil
 }
 
+func (c *blogServiceClient) ReadBlog(ctx context.Context, in *ReadBlogReq, opts ...grpc.CallOption) (*ReadBlogRes, error) {
+	out := new(ReadBlogRes)
+	err := c.cc.Invoke(ctx, "/blog.BlogService/ReadBlog", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *blogServiceClient) UpdateBlog(ctx context.Context, in *UpdateBlogReq, opts ...grpc.CallOption) (*UpdateBlogRes, error) {
+	out := new(UpdateBlogRes)
+	err := c.cc.Invoke(ctx, "/blog.BlogService/UpdateBlog", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BlogServiceServer is the server API for BlogService service.
 type BlogServiceServer interface {
 	CreateBlog(context.Context, *CreateBlogReq) (*CreateBlogRes, error)
+	ReadBlog(context.Context, *ReadBlogReq) (*ReadBlogRes, error)
+	UpdateBlog(context.Context, *UpdateBlogReq) (*UpdateBlogRes, error)
 }
 
 // UnimplementedBlogServiceServer can be embedded to have forward compatible implementations.
@@ -350,6 +625,12 @@ type UnimplementedBlogServiceServer struct {
 
 func (*UnimplementedBlogServiceServer) CreateBlog(context.Context, *CreateBlogReq) (*CreateBlogRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBlog not implemented")
+}
+func (*UnimplementedBlogServiceServer) ReadBlog(context.Context, *ReadBlogReq) (*ReadBlogRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadBlog not implemented")
+}
+func (*UnimplementedBlogServiceServer) UpdateBlog(context.Context, *UpdateBlogReq) (*UpdateBlogRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBlog not implemented")
 }
 
 func RegisterBlogServiceServer(s *grpc.Server, srv BlogServiceServer) {
@@ -374,6 +655,42 @@ func _BlogService_CreateBlog_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BlogService_ReadBlog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadBlogReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BlogServiceServer).ReadBlog(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/blog.BlogService/ReadBlog",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BlogServiceServer).ReadBlog(ctx, req.(*ReadBlogReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BlogService_UpdateBlog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBlogReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BlogServiceServer).UpdateBlog(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/blog.BlogService/UpdateBlog",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BlogServiceServer).UpdateBlog(ctx, req.(*UpdateBlogReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _BlogService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "blog.BlogService",
 	HandlerType: (*BlogServiceServer)(nil),
@@ -381,6 +698,14 @@ var _BlogService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateBlog",
 			Handler:    _BlogService_CreateBlog_Handler,
+		},
+		{
+			MethodName: "ReadBlog",
+			Handler:    _BlogService_ReadBlog_Handler,
+		},
+		{
+			MethodName: "UpdateBlog",
+			Handler:    _BlogService_UpdateBlog_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

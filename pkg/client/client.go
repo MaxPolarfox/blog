@@ -58,3 +58,43 @@ func (i *BlogClient) CreateBlog(ctx context.Context, data types.Blog) (*string, 
 
 	return &createdId, nil
 }
+
+func (i *BlogClient) ReadBlog(ctx context.Context, blogId string) (*types.Blog, error) {
+	req := &blogpb.ReadBlogReq{
+		BlogId: blogId,
+	}
+
+	res, err := i.client.ReadBlog(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+
+	blog := res.GetBlog()
+
+	blogRes := types.Blog{
+		ID: blog.GetId(),
+		AuthorId: blog.GetAuthorId(),
+		Title: blog.GetTitle(),
+		Content: blog.GetContent(),
+	}
+
+	return &blogRes, nil
+}
+
+func (i *BlogClient) UpdateBlog(ctx context.Context, blog types.Blog) (error) {
+	req := &blogpb.UpdateBlogReq{
+		Blog: &blogpb.Blog{
+			Id: blog.ID,
+			AuthorId: blog.AuthorId,
+			Title: blog.Title,
+			Content: blog.Content,
+		},
+	}
+
+	_, err := i.client.UpdateBlog(ctx, req)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

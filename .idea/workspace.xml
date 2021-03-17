@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acc2782e-20eb-4dae-ba0a-ba50a0c5dcce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmd/client/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/blog/client_development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/blog/server_development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/blog/service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/client/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/types/options.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/types/types.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/utils/utils.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogpb/blog.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/blogpb/blog.pb.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogpb/blog.proto" beforeDir="false" afterPath="$PROJECT_DIR$/blogpb/blog.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/client.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/client/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/blog/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/blog/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/client/client.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

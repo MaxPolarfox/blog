@@ -18,6 +18,9 @@ const ServiceName = "blog"
 const EnvironmentVariable = "APP_ENV"
 
 func main() {
+
+	ctx := context.Background()
+
 	// Load current environment
 	env := os.Getenv(EnvironmentVariable)
 
@@ -33,11 +36,47 @@ func main() {
 		Content:  "test content",
 	}
 
-	res, err := client.CreateBlog(context.Background(), data)
+	createdRes, err := client.CreateBlog(ctx, data)
 	if err != nil {
-		log.Printf("error happened while calling CrateBlog: %v", err)
+		log.Printf("Create blog error: %v", err)
 	} else {
-		log.Printf("Response from server: %#v", *res)
+		log.Printf("Blog was creates: %#v", *createdRes)
+	}
+
+	// Should return blog
+	_, err = client.ReadBlog(ctx, "123456789")
+	if err != nil {
+		log.Printf("Read blog error: %v", err)
+	}
+
+	// Should return not found
+	_, err = client.ReadBlog(ctx, *createdRes)
+	if err != nil {
+		log.Printf("Read blog error: %v", err)
+	}
+
+	// Should return blog
+	readRes, err := client.ReadBlog(ctx, *createdRes)
+	if err != nil {
+		log.Printf("Read blog error: %v", err)
+	} else {
+		log.Printf("Blog was read: %#v", *readRes)
+	}
+
+	// Should return not found
+	readRes.Content = "Updated content"
+	err = client.UpdateBlog(ctx, types.Blog{ID: "12345"})
+	if err != nil {
+		log.Printf("Update blog error: %v", err)
+	}
+
+	// Should successfully update blog blog
+	readRes.Content = "Updated content"
+	err = client.UpdateBlog(ctx, *readRes)
+	if err != nil {
+		log.Printf("Update blog error: %v", err)
+	} else {
+		log.Printf("Successfully updated blog: %v", readRes.ID)
 	}
 }
 
